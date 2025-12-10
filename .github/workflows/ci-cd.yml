@@ -1,0 +1,86 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'book/package-lock.json'
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install Python dependencies
+      run: |
+        cd api
+        pip install -r requirements.txt
+
+    - name: Install Node.js dependencies
+      run: |
+        cd book
+        npm ci
+
+    - name: Run Python tests
+      run: |
+        cd api
+        python -m pytest tests/
+
+    - name: Build Docusaurus
+      run: |
+        cd book
+        npm run build
+
+    - name: Test Docusaurus build
+      run: |
+        cd book
+        npm run serve &
+        sleep 5
+        curl -f http://localhost:3000/ || exit 1
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'book/package-lock.json'
+
+    - name: Install dependencies
+      run: |
+        cd book
+        npm ci
+
+    - name: Build Docusaurus
+      run: |
+        cd book
+        npm run build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./book/build
+        publish_branch: gh-pages

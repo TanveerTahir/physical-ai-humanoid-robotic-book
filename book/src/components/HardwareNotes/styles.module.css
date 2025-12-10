@@ -1,0 +1,61 @@
+.hardwareNotesContainer {
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.noteItem {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.noteItem:last-child {
+  border-bottom: none;
+}
+
+.noteHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.noteIcon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.noteTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.noteContent {
+  margin-left: 28px;
+}
+
+.noteContent p {
+  margin: 0;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+/* GPU-specific styling */
+.noteItem:nth-child(1) {
+  background-color: #f8f9ff;
+}
+
+.noteItem:nth-child(1) .noteTitle {
+  color: #3498db;
+}
+
+/* Jetson-specific styling */
+.noteItem:nth-child(2) {
+  background-color: #fff8f0;
+}
+
+.noteItem:nth-child(2) .noteTitle {
+  color: #e67e22;
+}

@@ -1,0 +1,66 @@
+.urdfVisualizerContainer {
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #fafafa;
+}
+
+.visualizerTitle {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.visualizerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.visualizerCanvas {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  margin-bottom: 12px;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.controlButton {
+  padding: 6px 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.controlButton:hover {
+  background-color: #2980b9;
+}
+
+.urdfInfo {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #e3f2fd;
+  border-radius: 4px;
+  border-left: 4px solid #3498db;
+}
+
+.urdfInfo p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.description {
+  font-style: italic;
+  color: #666;
+}

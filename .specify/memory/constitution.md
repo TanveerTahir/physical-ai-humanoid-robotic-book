@@ -1,55 +1,58 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: N/A -> 1.0.0
+List of modified principles: N/A (new constitution)
+Added sections: All principles and sections for Physical AI & Humanoid Robotics project
+Removed sections: Template placeholder sections
+Templates requiring updates: N/A
+Follow-up TODOs: None
+-->
+
+# Physical AI & Humanoid Robotics AI-Native Book + Platform Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Mission & Purpose
+This project creates an AI-Native textbook on Physical AI & Humanoid Robotics using Docusaurus. The book will be deployed publicly on GitHub Pages, supported with a backend and an AI RAG chatbot. The platform will support personalization and Urdu translation. Deliverables include both high-quality educational content and a production-grade technical ecosystem.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Audience Definition
+This textbook must be accessible to four learner categories: Beginners in robotics, Intermediate AI developers, University-level engineering learners, and Professionals entering robotics. Every chapter must support scalable learning paths, from introductory to advanced.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Pedagogical Philosophy (NON-NEGOTIABLE)
+Teaching methodology: Hybrid → Theory + Code + Simulation + Hands-on work. Content must guide the reader from conceptual understanding to practical physical AI implementation. The course must gradually build competence toward conversational humanoid robotics.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Style & Tone
+The writing tone is mixed: practical engineering + conversational teaching clarity. Complex robotics and AI concepts must be simplified without loss of depth. Analogies, diagrams, and stepwise reasoning are encouraged.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Structural Requirements for the Book
+Every chapter must: Be GPU/Jetson clear (indicate computing requirements), include diagrams or flow-based visual representations where applicable, contain real code relevant to the robotics stack (ROS, Gazebo, Isaac, VLA, etc.), have embedded URDF examples wherever required, support RAG-friendly modular chunking (atomic logical segments), and include a capstone-style mini-project at the end of each module.
 
-### [PRINCIPLE_6_NAME]
+### VI. Technical Platform Standards
+The frontend is Docusaurus. The backend uses FastAPI + Neon + Qdrant + OpenAI Agents. Content embeddings must be generated chapter-by-chapter. Content retrieval must support: a) full-book queries, b) selected-text locality queries, c) personalization-context queries.
 
+## Additional Constraints
 
-[PRINCIPLE__DESCRIPTION]
+### Content Clarity Requirements
+Every concept must be anchored to simulation or physical execution. No oversimplification at the cost of correctness. When ambiguity exists in robotics tradeoffs, clarity must be favored over abstraction.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Hardware Transparency Requirements
+Every major algorithm or concept must specify if: It can run on workstation only, It can be tested in Isaac Cloud, It can run on Jetson (and with what limitations). This protects learners from wasted time.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### AI Agent Framework Rules
+Whenever a complex learner-centered task arises, reusable Claude Code Subagents must be preferred. Examples of reusable intelligence: Quiz generator, Personalization agent, Translation agent, Vision-SLAM explainer, ROS debugging agent. Agents must not hallucinate beyond book content.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Engineering Process Rules
+Spec-driven development must be strictly followed: /sp.specify → /sp.plan → /sp.task → /sp.implement. Code or text must never be generated without a prior specification. All assets must be version-controlled via GitHub. All documentation must be placed inside the repo under /docs.
+
+### Assessment Philosophy
+Capstone-style mini-projects conclude every major module. Small exercises guide students toward the final humanoid-capstone. Projects must be reproducible locally or in cloud via recommended configurations.
+
+### RAG and Knowledge Retrieval Quality Rules
+Textbook content must be chunked logically for precise retrieval. No chapter may exceed retrieval granularity constraints. The chatbot must always prioritize grounded responses from the book.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Personalization requires stored learner metadata (using BetterAuth at signup). Urdu translation is performed dynamically (caching allowed). Both features must be triggered via button UI in chapters. Deployment rules: Book must be deployed publicly using GitHub Pages or Vercel. Backend must expose documented endpoints for: auth, embeddings, RAG, personalization, translation. Environment variables must be managed securely. Code must be readable and documented. Diagrams, schemas, and URDF snippets must be included openly where possible. Readers should be able to replicate the entire learning process.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
